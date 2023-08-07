@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "beginner-tutorial-w-ninja-2",
+    "slug": "beginner-tutorial-w-ninja-2"
+  }
+}
