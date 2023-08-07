@@ -32,11 +32,15 @@ npx create-expo-app -e with-router
 
 <!-- NOTES -->
 
+## PERSONAL NOTES
+
 - https://reactnative.dev/docs/intro-react-native-components#core-components
 - https://reactnative.dev/docs/ (VERY IMPORTANT)
 - In react native, button are self closing tags and receive props such as title, onPress, etc. but they do not take in style prop
 - Go to the api reference for a particular rn tag to see more information about the props you can use and how they work. Good advice.
 
 <!-- ISSUES AND FIXES -->
+
+## ISSUES AND THEIR FIXES
 
 - In FlatList, item must be destructure (({})) not (())
