@@ -6,11 +6,13 @@ import {
   TouchableOpacity,
   Keyboard,
   Alert,
+  TouchableWithoutFeedback,
 } from "react-native";
 import React, { useState } from "react";
 import Header from "../components/header";
 import TodoItem from "../components/todoItem";
 import AddTodo from "../components/addTodo";
+import Sandbox from "../components/sandbox";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([
@@ -36,28 +38,37 @@ const TodoApp = () => {
         ...prevTodos,
         { text, key: Math.random().toString() },
       ]);
-      Keyboard.dismiss();
     }
   };
 
   return (
-    <View style={styles.container}>
-      {/* header */}
-      <Header />
-      <View style={styles.content}>
-        {/* todo form */}
-        <AddTodo submitHandler={submitHandler} />
-        <View style={styles.list}>
-          {/* flat list */}
-          <FlatList
-            data={todos}
-            renderItem={({ item }) => (
-              <TodoItem pressHandler={pressHandler} item={item} />
-            )}
-          />
+    <>
+      {/*  <Sandbox /> */}
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+      >
+        <View style={styles.container}>
+          {/* header */}
+          <Header />
+          <View style={styles.content}>
+            {/* todo form */}
+            <AddTodo submitHandler={submitHandler} />
+            <View style={styles.list}>
+              {/* flat list */}
+              <FlatList
+                data={todos}
+                renderItem={({ item }) => (
+                  <TodoItem pressHandler={pressHandler} item={item} />
+                )}
+                showsVerticalScrollIndicator={false}
+              />
+            </View>
+          </View>
         </View>
-      </View>
-    </View>
+      </TouchableWithoutFeedback>
+    </>
   );
 };
 
@@ -69,9 +80,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5FCFF",
   },
   content: {
+    flex: 1,
     padding: 40,
   },
   list: {
+    flex: 1,
     marginTop: 20,
   },
 });
