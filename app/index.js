@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   Keyboard,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import Header from "../components/header";
@@ -25,11 +26,18 @@ const TodoApp = () => {
   };
 
   const submitHandler = (text) => {
-    setTodos((prevTodos) => [
-      ...prevTodos,
-      { text, key: Math.random().toString() },
-    ]);
-    Keyboard.dismiss();
+    if (text.length < 3) {
+      // Calling the alert method on the alert object
+      Alert.alert("OOPS!", "Todos must be over 3 chars long", [
+        { text: "Understood", onPress: () => console.log("alert closed") },
+      ]);
+    } else {
+      setTodos((prevTodos) => [
+        ...prevTodos,
+        { text, key: Math.random().toString() },
+      ]);
+      Keyboard.dismiss();
+    }
   };
 
   return (
