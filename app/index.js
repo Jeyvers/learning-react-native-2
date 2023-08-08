@@ -38,6 +38,7 @@ const TodoApp = () => {
         ...prevTodos,
         { text, key: Math.random().toString() },
       ]);
+      Keyboard.dismiss();
     }
   };
 
