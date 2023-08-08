@@ -4,10 +4,12 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Keyboard,
 } from "react-native";
 import React, { useState } from "react";
 import Header from "../components/header";
 import TodoItem from "../components/todoItem";
+import AddTodo from "../components/addTodo";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([
@@ -22,12 +24,21 @@ const TodoApp = () => {
     });
   };
 
+  const submitHandler = (text) => {
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { text, key: Math.random().toString() },
+    ]);
+    Keyboard.dismiss();
+  };
+
   return (
     <View style={styles.container}>
       {/* header */}
       <Header />
       <View style={styles.content}>
         {/* todo form */}
+        <AddTodo submitHandler={submitHandler} />
         <View style={styles.list}>
           {/* flat list */}
           <FlatList
